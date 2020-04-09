@@ -1,3 +1,3 @@
 public interface Translator {
-    String translate(String input);
+    String translate(String word);
 }

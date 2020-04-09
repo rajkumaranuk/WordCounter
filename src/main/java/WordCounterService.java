@@ -1,4 +1,4 @@
 public interface WordCounterService {
-    void addWord(String input);
-    int countWord(String input);
+    void addWord(String word);
+    int countWord(String word);
 }
