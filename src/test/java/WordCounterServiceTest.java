@@ -107,6 +107,19 @@ public class WordCounterServiceTest {
     }
 
     @Test
+    public void addAWordWithDifferentCasesAndCountSuccessfully() {
+        final String word = "word";
+        when(translator.translate(eq(word))).thenReturn(word);
+
+        wordCounterService.addWord("word");
+        wordCounterService.addWord("Word");
+        wordCounterService.addWord("WORD");
+
+        final int count = wordCounterService.countWord(word);
+        assertThat(count, equalTo(3));
+    }
+
+    @Test
     public void addSomeWordsAndCountSuccessfully() {
         final String word = "word";
         final String test = "test";

@@ -24,7 +24,7 @@ public class WordCounterServiceImpl implements WordCounterService {
             throw new WordCounterException("Word contains non-alphabetic characters");
         }
 
-        final String translated = translator.translate(word).toLowerCase();
+        final String translated = translator.translate(word.toLowerCase());
         store.compute(translated, (key, value) -> (value == null) ? 1 : value + 1);
     }
 
@@ -33,7 +33,7 @@ public class WordCounterServiceImpl implements WordCounterService {
         if (word == null || !word.matches(PATTERN)) {
             return 0;
         }
-        final String translated = translator.translate(word).toLowerCase();
+        final String translated = translator.translate(word.toLowerCase());
         return store.computeIfAbsent(translated, k -> 0);
     }
 }
